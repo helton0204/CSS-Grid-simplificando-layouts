@@ -1,0 +1,345 @@
+:root{ /*espaço para criar variáveis*/
+   --cor-de-fundo: #f1f1f1; 
+   --cor-do-cartao: #fdfdfd;
+   --cor-da-fonte-escura: #393939;
+   --cor-da-fonte-clara: #777777;
+   --cor-hover: #6e26ff;
+   --cinza: #cccccc;
+}
+
+.app {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cor-de-fundo);
+    color: var(--cor-da-fonte);
+    display: grid;  
+    grid-template-areas: /*esse grid possui apenas uma coluna e três linhas*/
+        "cabecalho"
+        "conteudo"
+        "rodape";
+    grid-template-columns: auto;  
+    grid-template-rows: 60px auto auto; /*a primeira linha tem uma altura da 50px, a segunda e a terceira têm um tamanho automático*/
+    padding: 0 2em;
+}
+
+
+/* HEADER */
+
+.cabecalho {
+    grid-area: "cabecalho";
+}
+
+.cabecalho{
+    display: flex;
+    align-items: center;
+}
+
+.menu__item{
+    display: flex;
+    align-items: center;
+}
+
+.menu__link{
+    font-size: 22px;
+    color: var(--cor-da-fonte-escura);
+    padding: 0 20px;
+    margin: 0 10px;
+}
+
+.menu__link:hover{
+    border-bottom: 3px solid var(--cor-hover);
+    transition: 0.1s;
+}
+
+
+/* CONTEÚDO PRINCIPAL - DESTAQUE */
+
+.conteudo {
+    grid-area: "conteudo";
+}
+
+.destaques{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /*definindo as colunas do grid*/
+    grid-template-rows: 1fr 1fr 1fr; /*definindo as linhas do grid*/
+    grid-gap: 0.3rem;
+    height: calc(100vh - 60px); /*calculando a altura do elemento .destaque (50px se refere a altura do cabecalho)*/
+}
+
+.destaques__principal{ /*__ é baseada na metodologia BEM, aonde o nome depois do __ é um elemento filho do bloco anterior, ou seja, "destaques" é o bloco (section destaques) e "principal" é o elemento filho*/
+    background-image: url("../img/fortnite.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover; /*faz a imagem cobrir toda a área destinada para ela*/
+    grid-column: 1/4;
+    grid-row: 1/3;
+    
+}
+
+.destaques__secundario:nth-child(2){ /*:nth-child(2) significa que está selecionando o segundo elemento filho do bloco "destaques"*/
+    background-image: url("../img/pubg.jpg");
+    background-size: cover;
+    background-position: center;
+    grid-column: 4/4;
+    grid-row: 1/1;
+}
+
+.destaques__secundario:nth-child(3){
+    background-image: url("../img/slack.png");
+    background-size: cover;
+    background-position: center;
+    grid-column: 4/4;
+    grid-row: 2/2;
+}
+
+.destaques__secundario:nth-child(4){
+    background-image: url("../img/whatsapp.png");
+    background-size: cover;
+    background-position: center;
+    grid-column: 4/4;
+    grid-row: 3/3;
+}
+
+.destaques__secundario:nth-child(5){
+    background-image: url("../img/cs-go.jpg");
+    background-size: cover;
+    grid-column: 3/3;
+    grid-row: 3/3;
+}
+
+.caixa{
+    display: flex;
+    align-items: flex-end;
+}
+
+.destaques__titulo{
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    padding: 0.4em 0;
+    text-align: center;
+    color: var(--cor-de-fundo);
+}
+
+.destaques__categorias{
+    grid-column: 1/3;
+    grid-row: 3/3;
+}
+
+.destaques__categorias___lista{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+}
+
+.destaques__categorias___item{
+    display: flex; /*depois de formatar as linhas e colunas do display grid, deve-se trabalhar os elementos de cada bloco com flexbox*/
+    background-color: var(--cor-de-fundo);
+    align-items: center;
+    padding-left: 2em;
+    border: 1px solid var(--cinza);
+}
+
+.destaques__categorias___link{
+    color: var(--cor-da-fonte);
+}
+
+/* CONTEÚDO PRINCIPAL - APLICATIVOS, JOGOS E LANÇAMENTOS */
+
+.populares__cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 2em 0.5em 2em;
+    margin-bottom: 0.9em;
+    border-bottom: 1px solid var(--cinza);
+}
+
+.populares__icone{
+    margin-right: 0.5em;
+}
+
+.populares__titulo{
+    font-weight: 500;
+}
+
+.populares__botao{
+    border: none;
+    color: var(--cor-da-fonte-escura);
+    transition: 0.3s;
+}
+
+.populares__botao:hover{
+    color: var(--cor-hover);
+    transition: 0.3s;
+}
+
+.populares__botao___icone{
+    margin-right: 0.5em;
+}
+
+.populares__conteudo{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 0.7rem;
+}
+
+.populares__card{
+    display: grid;
+    grid-template-areas: 
+        "card-imagem"
+        "card-corpo";
+    grid-template-columns: 100%;
+    grid-template-rows: 173px auto;
+    background: var(--cor-do-cartao);
+}
+
+.populares__card___imagem{
+    grid-area: "card-imagem";
+    height: 100%;
+    width: 100%;
+}
+
+.populares__card___corpo{
+    grid-area: "card-corpo";
+    padding: 0.75em;
+}
+
+.populares__card___cabecalho{
+    margin-bottom: 1.2em;
+}
+
+.populares__card___titulo{
+    font-size: 28px;
+    color: var(--cor-da-fonte-escura);
+    margin-bottom: 5px;
+}
+
+.populares__card___data{
+    color: var(--cor-da-fonte-clara);
+    font-size: 14px;
+}
+
+.populares__card___descricao{
+    text-align: justify;
+    color: var(--cor-da-fonte-escura);
+}
+
+/* FOOTER */
+
+.rodape {
+    grid-area: "rodape";
+    background: var(--cor-do-cartao);
+    text-align: center;
+    margin-top: 2em;
+    padding: 1em 0;
+    color: var(--cor-da-fonte-escura);
+}
+
+
+/* RESPONSIVO */
+
+/* CELULAR */
+@media screen and (max-width: 430px){
+
+    .app{
+        padding: 0 0.5em;
+        grid-template-columns: auto; 
+    }
+
+    .menu__item{
+        justify-content: center;
+    }
+
+    .menu__link{
+        font-size: 18px;
+        padding: 0 20px;
+        margin: 0;
+    }
+
+    .destaques__secundario:nth-child(2){
+        display: none;
+        grid-column: none;
+        grid-row: none;
+    }
+
+    .destaques__secundario:nth-child(3){
+        display: none;
+        grid-column: none;
+        grid-row: none;
+    }
+
+    .destaques__secundario:nth-child(4){
+        display: none;
+        grid-column: none;
+        grid-row: none;
+    }
+
+    .destaques__secundario:nth-child(5){
+        display: none;
+        grid-column: none;
+        grid-row: none;
+    }
+
+    .destaques__principal{
+        grid-column: 1/5;
+    }
+
+    .destaques__categorias{
+        grid-column: 1/5;
+    }
+
+    .populares__cabecalho{
+        padding: 2em 1em 0.5em 1em;
+    }
+    
+    .populares__icone{
+        margin-right: 0.2em;
+    }
+
+    .populares__conteudo{
+        display: flex;
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    .populares__card{
+        margin-bottom: 1em;
+    }
+}
+
+/* TABLET */
+@media screen and (min-width: 431px) and (max-width: 768px){
+    .populares__conteudo{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: auto;
+    }
+
+    .populares__card{
+        margin-bottom: 1em;
+    }
+
+    .populares__card{ 
+        grid-template-rows: auto auto;
+    }
+}
+
+/* TABLET */
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .populares__conteudo{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: auto;
+    }
+
+    .populares__card{
+        margin-bottom: 1em;
+    }
+
+    .populares__card{ 
+        grid-template-rows: auto auto;
+    }
+}
+
+
